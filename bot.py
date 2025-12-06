@@ -1,12 +1,11 @@
-from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+PORT = int(os.environ.get('PORT', 5000))
 
-TOKEN = "7756938468:AAG0n8ynT2FV3KQoeu641XIL_x8WyoV2wdI"
+updater.start_webhook(
+    listen="0.0.0.0",
+    port=PORT,
+    url_path=TOKEN
+)
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("تفضل تستحيش")
+updater.bot.set_webhook(f"https://Sarehny.onrender.com/{TOKEN}")
 
-app = ApplicationBuilder().token(TOKEN).build()
-app.add_handler(CommandHandler("start", start))
 
-app.run_polling()
